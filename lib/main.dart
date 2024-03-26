@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
       // backgroundColor: Colors.grey,
       body: Center(
         child: Text(
-          'Hello World. We are starting a new application from today askflsk flaksf lkslf k;slkf;lks lfksdlkf l;sklf sl;fk l;s;l',
+          'Hello World. We are starting a new application from today',
           textAlign: TextAlign.center,
           maxLines: 1,
           style: TextStyle(
