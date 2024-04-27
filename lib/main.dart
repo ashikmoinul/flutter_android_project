@@ -1,5 +1,47 @@
-// Buttons(ElevatedButton, TextButton, IconButton, GestureDetector, InkWell)
-// |  TextField | Container | Padding
+/*import 'package:flutter/cupertino.dart';
+
+void main() {
+  runApp(iOSStyleApp());
+}
+
+class iOSStyleApp extends StatelessWidget {
+  const iOSStyleApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CupertinoApp(
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          middle: Text('Home'),
+          trailing: CupertinoButton(
+            onPressed: () {},
+            child: Icon(CupertinoIcons.add),
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CupertinoActivityIndicator(
+                radius: 24,
+              ),
+              CupertinoSwitch(value: false, onChanged: (value) {})
+            ],
+          ),
+        ),
+    );
+  }
+}*/
 
 import 'package:flutter/material.dart';
 
@@ -8,271 +50,115 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hello World',
-      // debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: HomeScreen(),
+      theme: ThemeData(
+          brightness: Brightness.light,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            // style: ElevatedButton.styleFrom(
+            //   backgroundColor: Colors.pink,
+            //   foregroundColor: Colors.white,
+            //   shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.circular(8),
+            //   ),
+            // ),
+            style: ButtonStyles.elevatedButton,
+          ),
+          textButtonTheme: TextButtonThemeData(
+            style: ButtonStyles.textButton,
+          ),
+          inputDecorationTheme: InputDecorationTheme(
+              enabledBorder: OutlineInputBorder(),
+              focusedBorder:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+              errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red))),
+          appBarTheme: AppBarTheme(
+              backgroundColor: Colors.green,
+              centerTitle: true,
+              elevation: 3,
+              titleTextStyle: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20))),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.purple,
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+        ),
+      ),
+      themeMode: ThemeMode.light,
     );
   }
 }
 
-// Column => Vertically
-// Row => Horizontally
-
-class Home extends StatelessWidget {
-  List<String> studentList = [
-    'Jahid',
-    'Nayeem',
-    'Abir',
-    'Hasan',
-    'Tonu'
-  ];
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Write whatever you want to show in screen
     return Scaffold(
-      backgroundColor: Colors.lightGreen.shade50,
       appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: Text('Home screen', style: TextStyle(
-            color: Colors.white
-        ),),
-        leading: Icon(Icons.home_filled, color: Colors.white,),
+        title: Text('Home'),
+        leading: Icon(Icons.home),
         actions: [
-          IconButton(onPressed: () {
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(
-            //     content: Text('Money has been transferred'),
-            //     backgroundColor: Colors.green,
-            //     duration: Duration(seconds: 1),
-            //   ),
-            // );
-            showDialog(context: context, builder: (context) {
-              return AlertDialog(
-                title: Text('Send money'),
-                content: Text('Are you sure that you want to send money?'),
-                actions: [
-
-                ],
-              );
-            });
-          }, icon: Icon(Icons.add)),
+          Icon(Icons.add)
         ],
       ),
-      // body: SingleChildScrollView(
-      //   child: Column(
-      //     children: [
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //       Text('sdfjdkslfkds'),
-      //     ]
-      //   ),
-      // )
-      /*body: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-        Text('sdfjdkslfkds'),
-      ]),*/
-      /*body: ListView.builder(
-        itemCount: 100,
-          itemBuilder: (context, index) {
-            return Text('${index + 1}', style: TextStyle(
-              fontSize: 32
-            ),);
-          }
-      ),*/
-      /*body: ListView.builder(
-          itemCount: studentList.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Text(studentList[index], style: TextStyle(
-                    fontSize: 18
-                  ),),
-                  Divider()
-                ],
-              ),
-            );
-          },
-      ),*/
-      /*body: ListView.separated(
-        itemCount: studentList.length,
-        itemBuilder: (context, index) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(studentList[index],
-                style: TextStyle(
-                  fontSize: 18
-              ),),
-              Text(studentList[index],
-                style: TextStyle(
-                  fontSize: 18
-              ),),
-            ],
-          );
-        },
-        separatorBuilder: (context, index) {
-          return Divider(
-            height: 32,
-            thickness: 2,
-            endIndent: 16,
-            indent: 8,
-            color: Colors.pink,
-          );
-        },
-      ),*/
-      /*body: GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 6),
-        children: [
-          Text('1'),
-          Text('2'),
-          Text('3'),
-          Text('4'),
-          Text('5'),
-          Text('6'),
-          Text('7'),
-          Text('8'),
-          Text('8'),
-        ],
-      ),*/
-      // ALT + ENTER (Win)
-      // opt + Enter (Mac)
-      body: SingleChildScrollView(
+      body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ListView.builder(
-              shrinkWrap: true,
-              primary: false,
-              itemCount: studentList.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        studentList[index],
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      Divider()
-                    ],
-                  ),
-                );
-              },
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Tap to edit'),
             ),
-            GridView.builder(
-              shrinkWrap: true,
-              primary: false,
-              itemCount: 100,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 3,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Tap to edit'),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+              onPressed: () {},
+              child: Text('Tap to edit'),
+            ),
+            // 0xFF - prefix
+            TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Color(0xFF0F6CDC), // custom color
               ),
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    Text('Roll - ${index+1}'),
-                    // Text(studentList[index])
-                  ],
-                );
-              },),
+              onPressed: () {},
+              child: Text('Tap to edit'),
+            ),
+            TextField(),
+            TextField(),
           ],
         ),
       ),
     );
   }
+}
+
+class ButtonStyles {
+  static ButtonStyle elevatedButton = ElevatedButton.styleFrom(
+      backgroundColor: Colors.pink,
+      foregroundColor: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)));
+
+  static ButtonStyle textButton = TextButton.styleFrom(
+    textStyle: TextStyle(
+      fontSize: 24,
+    ),
+    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+  );
 }
