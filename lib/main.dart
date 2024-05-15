@@ -1,57 +1,91 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Profile Screen',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: ProfileScreen(),
+      home: const Home(),
+      theme: ThemeData(),
     );
   }
 }
 
-class ProfileScreen extends StatelessWidget {
+class Home extends StatelessWidget {
+  const Home({super.key});
+
   @override
   Widget build(BuildContext context) {
+    // MediaQuery
+    print(MediaQuery.of(context).size);
+    print(MediaQuery.of(context).size.width);
+    print(MediaQuery.of(context).size.height);
+    print(MediaQuery.of(context).orientation);
+    print(MediaQuery.of(context).devicePixelRatio);
+    print(MediaQuery.of(context).displayFeatures);
+    print(MediaQuery.displayFeaturesOf(context));
+    print(MediaQuery.sizeOf(context));
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        backgroundColor: Colors.green,
+        title: const Text('Home'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 75.0,
-              backgroundImage: AssetImage('rsz_260.jpg'), // Replace with your image asset path
-            ),
-            SizedBox(height: 20.0),
-            Text(
-              'Moinul Hossain Ashik',
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              'ashik.moinul150@gmail.com',
-              style: TextStyle(fontSize: 16.0, color: Colors.grey),
-            ),
-            SizedBox(height: 15.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                style: TextStyle(fontSize: 16.0),
-                textAlign: TextAlign.justify,
-              ),
-            ),
-          ],
-        ),
+      // body: Center(
+      //   child: Wrap(
+      //     alignment: WrapAlignment.center,
+      //     crossAxisAlignment: WrapCrossAlignment.start,
+      //     spacing: 4,
+      //     children: [
+      //       Text(MediaQuery.orientationOf(context).toString()),
+      //       Text(MediaQuery.orientationOf(context).toString()),
+      //       Text(MediaQuery.orientationOf(context).toString()),
+      //       Text(MediaQuery.orientationOf(context).toString()),
+      //       Text(MediaQuery.orientationOf(context).toString()),
+      //       Text(MediaQuery.orientationOf(context).toString()),
+      //       Text(MediaQuery.orientationOf(context).toString()),
+      //       Text(MediaQuery.orientationOf(context).toString()),
+      //       Text(MediaQuery.orientationOf(context).toString()),
+      //       Text(MediaQuery.orientationOf(context).toString()),
+      //     ],
+      //   ),
+      // ),
+     /* body: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+        if (constraints.maxWidth<400){
+          return Center(child: Text('Mobile'));
+        } else if (constraints.maxWidth<600){
+          return Center(child: Text('Tablet'));
+        } else if (constraints.maxWidth<1200){
+          return Center(child: Text('Laptop'));}
+
+        return Center(child: Text('Desktop'));
+       // return Center(child: Text(constraints.maxWidth.toString()));
+      },*/
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          if (orientation == Orientation.landscape){
+            return Container(
+              width: double.infinity,
+              height: double.infinity,
+              color: Colors.yellow,
+            );
+          }
+          else {
+            return Container(
+              width: double.infinity,
+              height: double.infinity,
+              color: Colors.red,
+            );
+          }
+      }
+
+
+
       ),
     );
   }
