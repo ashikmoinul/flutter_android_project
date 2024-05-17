@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main(){
   runApp(MyApp());
@@ -22,11 +24,40 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(  f
+      appBar: AppBar(
         backgroundColor: Colors.yellow,
         title: const Text('Home'),
-      )
+      ),
+    body: Column(
+        children: [
+          Flexible(                 // Flexible
+              fit: FlexFit.tight, // Flexible instead of Container
+            child:  Container(
+            width: 100,
+            height: 100,
+            color: Colors.red,
+          )
+          ),
+          Expanded(
+            //fit: FlexFit.tight,
+          child: Container(
+            width: 100,
+            height: 100,
+            color: Colors.yellow,
+          )
+        ),
+          //Container(
+        Expanded(
+            //fit: FlexFit.tight,
+            child: Container(
+              width: 100,
+              height: 100,
+              color: Colors.black,
+            )
+          )
+      ],
 
+    )
     );
   }
 }
