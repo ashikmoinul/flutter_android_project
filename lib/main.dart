@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
+import 'package:device_preview/device_preview.dart';
 void main(){
-  runApp(MyApp());
+  runApp(DevicePreview(
+    enabled: true,
+    builder: (context) => MyApp(), // Wrap your app
+  ),);
 }
 
 class MyApp extends StatelessWidget {
@@ -12,6 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       home: Home(),
       theme: ThemeData(),
     );
@@ -69,7 +74,7 @@ class Home extends StatelessWidget {
         //     ),
         //     )
         //   )
-          AspectRatio(aspectRatio: 4/5, child: Container(color: Colors.green)),
+          AspectRatio(aspectRatio: 14/8, child: Container(color: Colors.green)),
       ],
 
     )
